@@ -7,17 +7,17 @@ C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
 * a
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile.log
-*
-*
+* a
+* a
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile_OLD.log
-*
-*
+* a
+* a
 
 C:\Users\<user>\AppData\Roaming\TeamViewer\MRU\RemoteSupport\*tvc
-*
-*
+* a
+* a
 
 C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt
-*
-*
+* a
+* a
