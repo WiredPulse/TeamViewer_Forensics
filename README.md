@@ -8,8 +8,9 @@ C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
 * Time is in UTC
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile.log
-* a
-* a
+* Contains verbose information for troubleshooting
+* Contains verbose logging of incoming and outgoing connections
+* Contains the public IP of the connecting system
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile_OLD.log
 * a
