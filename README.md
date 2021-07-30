@@ -3,8 +3,8 @@ A series of scripts to parse Teamviewer logs to answer specific questions
 
 # Logs of Interest
 C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
-*
-*
+* a
+* a
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile.log
 *
