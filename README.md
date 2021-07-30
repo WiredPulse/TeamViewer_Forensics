@@ -3,8 +3,9 @@ A series of scripts to parse Teamviewer logs to answer specific questions
 
 # Logs of Interest
 C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
-* a
-* a
+* Logs successful connections to the system
+* Contains the following Properties: Teamviewer ID of connecting device, display name, start time, end time, username of logged on user, connection type, and the connection ID
+* Time is in UTC
 
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer**_Logfile.log
 * a
