@@ -23,3 +23,5 @@ C:\Users\<user>\AppData\Roaming\TeamViewer\MRU\RemoteSupport\*tvc
 C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt
 * a
 * a
+
+# Questions that can be Answered
