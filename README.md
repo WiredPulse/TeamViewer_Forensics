@@ -10,7 +10,7 @@ C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
 C:\ProgramFiles(x86)\Teamviewer\TeamViewer15_Logfile.log
 * Contains verbose information for troubleshooting
 * Contains verbose logging of incoming and outgoing connections
- * Can be used to identify successful and unsuccessful incoming or outgoing connections
+** Can be used to identify successful and unsuccessful incoming or outgoing connections
 * Can be used to identify settings and characteristics about the connecting system 
 * Contains the public IP (or assigned IP) of the connecting system
 * Depicted time in the log is local time to the system
