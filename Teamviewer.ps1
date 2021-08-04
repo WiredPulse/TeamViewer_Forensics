@@ -1,26 +1,33 @@
 function Get-TVIncomingLog_byDate{
     <#
     .SYNOPSIS
-    Short description
-    
-    .DESCRIPTION
-    Long description
+        Parses the connections_incoming.txt and returns data before, after, or between a specific date
     
     .PARAMETER File
-    Parameter description
+        Location to the connections_incoming.txt file
     
     .PARAMETER BeforeDate
-    Parameter description
+        Returns data before the specified date
     
     .PARAMETER AfterDate
-    Parameter description
+        Returns data after the specified date
     
     .EXAMPLE
-    An example
+        Get-TVIncomingLog_byDate -before "12/25/2020"
+
+        Returns data before December 25, 2020
     
-    .NOTES
-    General notes
+    .EXAMPLE
+        Get-TVIncomingLog_byDate -after "12/25/2020"
+
+        Returns data after December 25, 2020
+
+    .EXAMPLE
+        Get-TVIncomingLog_byDate -before "3/1/2021" -after "12/25/2020"
+
+        Returns data after March 1, 2021 before December 25, 2020
     #>
+
     [CmdletBinding()]
     param(
         $File,
