@@ -4,7 +4,7 @@ A series of functions to parse Teamviewer logs to answer specific questions
 # Logs of Interest
 * C:\ProgramFiles(x86)\Teamviewer\Connections_incoming.txt
   * Contains logs of successful connections to the system
-  * Contains the following Properties: Teamviewer ID of connecting device, display name, start time, end time, username of logged on user, connection type, and the connection ID
+  * Contains the following Properties: Teamviewer ID of the connecting device, display name, start time, end time, the username of logged on user, connection type, and the connection ID
   * Depicted time in the log is in UTC
 
 * C:\ProgramFiles(x86)\Teamviewer\TeamViewer15_Logfile.log
@@ -25,8 +25,21 @@ A series of functions to parse Teamviewer logs to answer specific questions
 
 * C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt
   * Contains logs of successful outgoing connections
-  * Contains the following Properties: Teamviewer ID of connecting device, start time, end time, username of logged on user, connection type, and the connection ID
+  * Contains the following Properties: Teamviewer ID of the connecting device, start time, end time, the username of logged on user, connection type, and the connection ID
   * Depicted time in the log is in UTC
 
 # Questions that can be Answered
+* What outgoing connections have this machine made?
+* Of those connections, what were the successful and unsuccessful ones?
+* What incoming connections were made to this machine?
+* What PID was tied to that connection and was there child process spawned?
+* What IPs are communicating with this machine?
+* What Teamviewer IDs communicate with this machine?
+* What is the keyboard layout associated with the incoming connection?
+* Were there any files transmitted during the incoming connection?
+* What is the duration of the incoming and outgoing connection?
+* How long does the Teamviewer process run, on average?
+
+# Disclaimer
+While the questions are valid for all versions of Teamviewer, the code was only tested with Teamviewer 15. 
 
