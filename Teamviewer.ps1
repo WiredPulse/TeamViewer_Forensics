@@ -1,7 +1,7 @@
 function Get-TVIncomingLog_byDate{
     <#
     .SYNOPSIS
-        Parses the connections_incoming.txt and returns data before, after, or between a specific date
+        Parses the connections_incoming.txt file and returns data before, after, or between a specific date
     
     .PARAMETER File
         Location to the connections_incoming.txt file
@@ -13,17 +13,17 @@ function Get-TVIncomingLog_byDate{
         Returns data after the specified date
     
     .EXAMPLE
-        Get-TVIncomingLog_byDate -before "12/25/2020"
+        Get-TVIncomingLog_byDate -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -before "12/25/2020"
 
         Returns data before December 25, 2020
     
     .EXAMPLE
-        Get-TVIncomingLog_byDate -after "12/25/2020"
+        Get-TVIncomingLog_byDate -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -after "12/25/2020"
 
         Returns data after December 25, 2020
 
     .EXAMPLE
-        Get-TVIncomingLog_byDate -before "3/1/2021" -after "12/25/2020"
+        Get-TVIncomingLog_byDate -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -before "3/1/2021" -after "12/25/2020"
 
         Returns data after March 1, 2021 before December 25, 2020
     #>
@@ -73,6 +73,34 @@ function Get-TVIncomingLog_byDate{
 }
 
 function Get-TVIncomingLog_Top10Duration{
+<#
+.SYNOPSIS
+    Parses the connections_incoming.txt file and returns the duration for the top 10 longest or shortest incoming connections
+
+.PARAMETER File
+    Location to the connections_incoming.txt file
+
+.PARAMETER shortest
+    Used select the shortest connections
+
+.PARAMETER longest
+    Used select the longest connections
+
+.EXAMPLE
+    Get-TVIncomingLog_Top10Duration -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" 
+
+    Returns the duration for all incoming connections
+
+.EXAMPLE
+    Get-TVIncomingLog_Top10Duration -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -shortest
+
+    Returns the top 10 shortest durations for all incoming connections
+
+.EXAMPLE
+    Get-TVIncomingLog_Top10Duration -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -longest
+
+    Returns the top 10 longest durations for all incoming connections
+#>
     [CmdletBinding()]
     param(
         $File,
@@ -112,7 +140,40 @@ function Get-TVIncomingLog_Top10Duration{
         $obj | Sort-Object Duration -Bottom 10 | Format-Table
     }
 }
+
 function Get-TVIncomingLog_Unique{
+<#
+.SYNOPSIS
+    Parses the connections_incoming.txt and returns the unique incoming IDs, display names, or logged on users
+
+.PARAMETER File
+    Location to the connections_incoming.txt file
+
+.PARAMETER IncomingID
+    Used to select the returning of unique incoming IDs
+
+.PARAMETER DisplayName
+    Used to select the returning of unique display names
+
+.PARAMETER LoggedOnUser
+    Used to select the returning of unique logged on users
+
+.EXAMPLE
+    Get-TVIncomigLog_Unique -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -incomingid
+
+    Returns the entries containing unique incoming IDs
+
+.EXAMPLE
+    Get-TVIncomigLog_Unique -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -displayname
+
+    Returns the entries containing unique display names
+
+.EXAMPLE
+    Get-TVIncomigLog_Unique -file "C:\Program Files (x86)\TeamViewer\connections_incoming.txt" -loggedonuser
+
+    Returns the entries containing unique logged on user
+
+#>
     [CmdletBinding()]
     param(
         $File,
@@ -159,6 +220,18 @@ function Get-TVIncomingLog_Unique{
 }
 
 function Get-TVLogFile_RunTimes{
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log for the run time of the Teamviewer program
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_RunTimes -directory "C:\Program Files (x86)\TeamViewer"
+
+    Will search the specified directory and parse the log files, returning the run time of the Teamviewer program
+#>
     [CmdletBinding()]
     param(
         $directory
@@ -191,6 +264,19 @@ function Get-TVLogFile_RunTimes{
 }
 
 function Get-TVLogFile_AccountLogons{
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log for the account names
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_AccountLogons -directory "C:\Program Files (x86)\TeamViewer"
+
+    Returns the account names
+
+#>
     [CmdletBinding()]
     param(
         $directory
@@ -229,6 +315,18 @@ function Get-TVLogFile_AccountLogons{
 }
 
 function Get-TVLogFile_IPs{
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log for a list of IPs used for incoming connections
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_IPs -directory "C:\Program Files (x86)\TeamViewer"
+
+    Returns the IPs used during the incoming connections
+#>
     [CmdletBinding()]
     param(
         $directory
@@ -264,8 +362,23 @@ function Get-TVLogFile_IPs{
 }
 
 Function Get-TVLogFile_PIDs{
-    # Double # #
-    # Needs cmdlet binding
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log and returns the PID for the connection
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_PIDs -directory "C:\Program Files (x86)\TeamViewer"
+
+    Returns the PIDs associated with the incoming connection
+#>
+    [CmdletBinding()]
+    param(
+        $directory
+    )
+
     $logs = Get-ChildItem ($directory + "\teamviewer15_Logfile*.log")
     
         $obj = @()
@@ -284,8 +397,22 @@ Function Get-TVLogFile_PIDs{
     }
     
 Function Get-TVLogFile_Outgoing{
-    # Double # #
-    # Needs cmdlet binding
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log and returns outgoing connections (successes and failures)
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_Outgoing -directory "C:\Program Files (x86)\TeamViewer"
+
+    Returns the outgoing connections (successes and failures)
+#>
+    [CmdletBinding()]
+    param(
+        $directory
+    )
     $logs = Get-ChildItem ($directory + "\teamviewer15_Logfile*.log")
     
         $obj = @()
@@ -322,8 +449,23 @@ Function Get-TVLogFile_Outgoing{
     }
 
 Function Get-TVLogFile_KeyboardLayout{
-    # Double # #
-    # Needs cmdlet binding
+<#
+.SYNOPSIS
+    Parses the Teamviewer15_logfile.log and Teamviewer15_logfile_OLD.log and returns the keyboard layout associated with the incoming connection
+
+.PARAMETER directory
+    Used to specify the directory containing the log files
+
+.EXAMPLE
+    Get-TVLogFile_KeyboardLayout -directory "C:\Program Files (x86)\TeamViewer"
+
+    Reurtns the keyboard layout associated with the incoming connection
+#>    
+    [CmdletBinding()]
+    param(
+        $directory
+    )
+    
     $logs = Get-ChildItem ($directory + "\teamviewer15_Logfile*.log")
     
         $obj = @()
@@ -341,8 +483,35 @@ Function Get-TVLogFile_KeyboardLayout{
         }
     }
 
-
 function Get-TVConnectionsLog_byDate{
+<#
+.SYNOPSIS
+    Parses the connections.txt and returns data before, after, or between a specific date
+
+.DESCRIPTION
+    Location to the connections.txt file
+
+.PARAMETER BeforeDate
+    Returns data before the specified date
+
+.PARAMETER AfterDate
+    Returns data after the specified date
+
+.EXAMPLE
+    Get-TVConnectionsLog_byDate -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" -before "12/25/2020"
+   
+    Returns data before December 25, 2020
+
+.EXAMPLE
+    Get-TVConnectionsLog_byDate -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" -after "12/25/2020"
+    
+    Returns data after December 25, 2020
+
+.EXAMPLE
+    Get-TVConnectionsLog_byDate -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" -before "3/1/2021" -after "12/25/2020"
+    
+    Returns data after March 1, 2021 before December 25, 2020
+#>
     [CmdletBinding()]
     param(
         $File,
@@ -389,8 +558,37 @@ function Get-TVConnectionsLog_byDate{
 }
 
 function Get-TVConnectionsLog_Top10Duration{
+<#
+.SYNOPSIS
+    Parses the connections.txt file and returns the duration for the top 10 longest or shortest outgoing connections
+
+.PARAMETER File
+    Location to the connections.txt file
+
+.PARAMETER shortest
+    Used select the shortest connections
+
+.PARAMETER longest
+    Used select the longest connections
+
+.EXAMPLE
+    Get-TVConnectionsLog_Top10Duration -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" 
+
+    Returns the duration for all outgoing connections
+
+.EXAMPLE
+    Get-TVConnectionsLog_Top10Duration -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" -shortest
+
+    Returns the top 10 shortest durations for all outgoing connections
+
+.EXAMPLE
+    Get-TVConnectionsLog_Top10Duration -file "C:\Users\<user>\AppData\Roaming\TeamViewer\connections.txt" -longest
+
+    Returns the top 10 longest durations for all outgoing connections
+#>
     [CmdletBinding()]
     param(
+        $file,
         [switch]$shortest,
         [switch]$longest
     )
