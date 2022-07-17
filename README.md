@@ -29,12 +29,12 @@ A series of functions to parse Teamviewer logs to answer specific questions
   * Depicted time in the log is in UTC
 
 # Questions that can be Answered
-* What outgoing connections have this machine made?
-* Of those connections, what were the successful and unsuccessful ones?
+* What outgoing connections haas this machine made?
+* Of those connections, which connections were the successful and unsuccessful?
 * What incoming connections were made to this machine?
-* What PID was tied to that connection and was there child process spawned?
+* What PID was tied to that connection and were there child process spawned?
 * What IPs are communicating with this machine?
-* What Teamviewer IDs communicate with this machine?
+* What Teamviewer IDs communicated with this machine?
 * What is the keyboard layout associated with the incoming connection?
 * Were there any files transmitted during the incoming connection?
 * What is the duration of the incoming and outgoing connection?
